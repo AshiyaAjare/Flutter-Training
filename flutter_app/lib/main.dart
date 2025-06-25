@@ -105,21 +105,24 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _handleLogin() {
-    if (_formKey.currentState!.validate()) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Login successful!')),
-      );
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => WelcomePage(email: _emailController.text),
+  if (_formKey.currentState!.validate()) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Login successful!')),
+    );
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => WelcomePage(), 
+        settings: RouteSettings(
+          arguments: _emailController.text, 
         ),
-      );
-
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please enter valid credentials')),
-      );
-    }
+      ),
+    );
+  } else {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Please enter valid credentials')),
+    );
   }
+}
+
 }

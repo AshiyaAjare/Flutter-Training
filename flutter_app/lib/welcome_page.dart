@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatelessWidget {
-  final String email;
-
-  const WelcomePage({super.key, required this.email});
+  const WelcomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final email = ModalRoute.of(context)?.settings.arguments as String;
+
     return Scaffold(
       appBar: AppBar(title: Text('Welcome')),
       body: Center(
@@ -18,7 +18,7 @@ class WelcomePage extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.pop(context); // Go back to Login
+                Navigator.pop(context);
               },
               child: Text('Back to Login'),
             ),
